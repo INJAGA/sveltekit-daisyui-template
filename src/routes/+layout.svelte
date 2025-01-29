@@ -5,7 +5,7 @@
 	import '../app.css';
 
 	let { children } = $props();
-	const title = 'Svelte5 & daisyUI テンプレート';
+	const title = 'Svelte 5 & daisyUI 5 Template';
 	let currentTheme = $state(themes[0]);
 	let scrollY = $state(0);
 
@@ -25,25 +25,30 @@
 	class="bg-primary text-primary-content sticky top-0 flex items-center p-1 text-4xl transition duration-700"
 	class:shadow-2xl={scrollY !== 0}
 >
-	<div class="flex-1">{title}</div>
+	<div class="flex flex-1 items-center">
+		<div class="i-ri:svelte-fill"></div>
+		<div class="hidden md:block">
+			{title}
+		</div>
+	</div>
 	<div class="join flex flex-none items-center">
 		<button
-			title="ライトテーマへ"
-			aria-label="ライトテーマへ"
+			title="To Light Theme"
+			aria-label="To Light Theme"
 			class="btn btn-ghost btn-square join-item"
 			onclick={() => (currentTheme = 'light')}
 		>
 			<span class="i-line-md:sunny-filled-loop"></span>
 		</button>
 		<button
-			title="ダークテーマへ"
-			aria-label="ダークテーマへ"
+			title="To Dark Theme"
+			aria-label="To Dark Theme"
 			class="btn btn-ghost btn-square join-item"
 			onclick={() => (currentTheme = 'dark')}
 		>
 			<span class="i-line-md:moon-filled-loop"></span>
 		</button>
-		<div title="テーマを変更する" class="dropdown dropdown-end">
+		<div title="Change Theme" class="dropdown dropdown-end">
 			<div tabindex="0" role="button" class="btn btn-ghost join-item block">
 				<div class="flex h-full items-center gap-0.5">
 					<div class="i-ic:baseline-color-lens"></div>

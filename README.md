@@ -1,16 +1,16 @@
-# SvelteKit & Tailwind CSS v4 & daisyUI v5 テンプレート
+# SvelteKit & Tailwind CSS v4 & daisyUI v5 Template
 
-## 技術スタック
+## Tech Stacks
 
 - [Svelte 5](https://svelte.dev/docs/svelte/overview)
 - [SvelteKit](https://svelte.dev/docs/kit/introduction)
 - [Tailwind CSS v4](https://tailwindcss.com/)
-- [daisyUI v5 beta](https://v5.daisyui.com/) - 正式版リリース後、追従予定
-- [UnoCSS](https://unocss.dev/) - Iconsプリセットのみ使用
+- [daisyUI v5 beta](https://v5.daisyui.com/) - Planning to follow stable release
+- [UnoCSS](https://unocss.dev/) - Using only [Icons preset](https://unocss.dev/presets/icons)
 
-## 実装済み機能
+## Features
 
-### テーマ変更機能
+### Change Theme
 
-- daisyUIのビルトインテーマを任意に変更可能
-- テーマはLocalStorageに保存され永続化される
+- You can use your favorite theme from daisyUI built-in themes
+- It's persisted in LocalStorage as key name "theme"
