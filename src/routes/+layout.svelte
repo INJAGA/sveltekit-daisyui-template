@@ -7,7 +7,6 @@
 	let { children } = $props();
 	const title = 'Svelte 5 & daisyUI 5 Template';
 	let currentTheme = $state(themes[0]);
-	let scrollY = $state(0);
 	let opensDrawer = $state(false);
 
 	onMount(() => {
@@ -20,16 +19,13 @@
 	});
 </script>
 
-<svelte:window bind:scrollY />
-
 <div class="drawer">
 	<input id="my-drawer" type="checkbox" class="drawer-toggle" bind:checked={opensDrawer} />
 	<div class="drawer-content">
 		<div
-			class="sticky top-0 flex items-center bg-primary px-1 py-0.5 text-4xl text-primary-content transition duration-700"
-			class:shadow-2xl={scrollY !== 0}
+			class="sticky top-0 flex items-center bg-primary px-1 py-0.5 text-primary-content shadow-xl transition duration-700"
 		>
-			<div class="flex flex-1 items-center">
+			<div class="flex flex-1 items-center gap-1 overflow-hidden">
 				<button
 					class="btn btn-square btn-ghost"
 					aria-label="Open Side Bar"
@@ -37,10 +33,9 @@
 						opensDrawer = true;
 					}}
 				>
-					<span class="i-ri:svelte-fill text-2xl"></span>
+					<span class="i-material-symbols:menu-rounded text-2xl"></span>
 				</button>
-				<!-- TODO: 横幅狭いときに...で表示させたい -->
-				<div class="hidden md:block">
+				<div class="overflow-hidden text-xl font-bold text-nowrap text-ellipsis">
 					{title}
 				</div>
 			</div>
