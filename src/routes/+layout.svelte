@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { themes } from '$lib/themes';
 	import { onMount } from 'svelte';
 	import 'virtual:uno.css';
