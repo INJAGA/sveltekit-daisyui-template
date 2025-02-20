@@ -6,11 +6,11 @@
 
 	let { children } = $props();
 	const title = 'Svelte 5 & daisyUI 5 Template';
-	let currentTheme = $state(themes[0]);
+	let currentTheme = $state('system');
 	let opensDrawer = $state(false);
 
 	onMount(() => {
-		currentTheme = localStorage.getItem('theme') ?? themes[0];
+		currentTheme = localStorage.getItem('theme') ?? 'system';
 	});
 
 	$effect(() => {
@@ -40,24 +40,24 @@
 				</div>
 			</div>
 			<div class="join flex flex-none items-center">
+				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button
-					title={currentTheme === 'light' ? 'To Dark Theme' : 'To Light Theme'}
-					aria-label={currentTheme === 'light' ? 'To Dark Theme' : 'To Light Theme'}
-					class="btn join-item btn-square btn-ghost"
-					onclick={() => (currentTheme = currentTheme === 'light' ? 'dark' : 'light')}
+					class="btn join-item btn-square text-2xl btn-ghost"
+					onclick={() => {
+						currentTheme = { system: 'light', light: 'dark' }[currentTheme] ?? 'system';
+					}}
 				>
 					<span
-						class={'text-2xl ' +
-							(currentTheme === 'light'
-								? 'i-line-md:sunny-filled-loop'
-								: currentTheme === 'dark'
-									? 'i-line-md:moon-filled-loop'
-									: 'i-ic:baseline-color-lens')}
+						class={{
+							light: 'i-line-md:sunny-filled-loop',
+							dark: 'i-line-md:moon-filled-loop',
+							system: 'i-material-symbols:brightness-auto'
+						}[currentTheme] ?? 'i-ic:baseline-color-lens'}
 					></span>
 				</button>
 				<div title="Change Theme" class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="btn join-item flex btn-square btn-ghost">
-						<div class="i-material-symbols:keyboard-arrow-down text-2xl"></div>
+					<div tabindex="0" role="button" class="btn join-item flex btn-square text-2xl btn-ghost">
+						<span class="i-material-symbols:keyboard-arrow-down"></span>
 					</div>
 					<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 					<ul
