@@ -8,9 +8,16 @@
 	const title = 'Svelte 5 & daisyUI 5 Template';
 	let currentTheme = $state('system');
 	let opensDrawer = $state(false);
+	let systemDarkMode = $state(false);
 
 	onMount(() => {
 		currentTheme = localStorage.getItem('theme') ?? 'system';
+
+		const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		systemDarkMode = darkModeMediaQuery.matches;
+		const listener = (event: MediaQueryListEvent) => (systemDarkMode = event.matches);
+		darkModeMediaQuery.addEventListener('change', listener);
+		return () => darkModeMediaQuery.removeEventListener('change', listener);
 	});
 
 	$effect(() => {
@@ -74,7 +81,10 @@
 									<div class="flex-1 capitalize">
 										{theme}
 									</div>
-									<div class="flex flex-none items-center gap-1 border p-1.5" data-theme={theme}>
+									<div
+										class="flex flex-none items-center gap-1 border p-1.5"
+										data-theme={theme === 'system' ? (systemDarkMode ? 'dark' : 'light') : theme}
+									>
 										<div class="badge badge-primary">A</div>
 										<div class="badge badge-secondary">A</div>
 										<div class="badge badge-neutral">A</div>
