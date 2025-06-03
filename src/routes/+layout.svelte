@@ -46,7 +46,7 @@
 					{title}
 				</div>
 			</div>
-			<div class="join flex flex-none items-center">
+			<div class="join flex">
 				<!-- svelte-ignore a11y_consider_explicit_label -->
 				<button
 					class="btn join-item btn-square text-2xl btn-ghost"
@@ -63,13 +63,13 @@
 					></span>
 				</button>
 				<div title="Change Theme" class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="btn join-item flex btn-square text-2xl btn-ghost">
+					<div tabindex="0" role="button" class="btn join-item btn-square text-2xl btn-ghost">
 						<span class="i-material-symbols:keyboard-arrow-down"></span>
 					</div>
 					<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 					<ul
 						tabindex="0"
-						class="dropdown-content menu z-1 h-[30rem] max-h-[calc(100vh-10rem)] flex-nowrap overflow-y-auto rounded-box bg-base-300 p-2 text-base-content shadow-2xl"
+						class="dropdown-content menu z-1 h-[30rem] max-h-[calc(100vh-10rem)] flex-nowrap overflow-x-clip overflow-y-auto rounded-box bg-base-300 p-2 text-base-content shadow-2xl"
 					>
 						{#each themes as theme}
 							<li>
